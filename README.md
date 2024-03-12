@@ -77,10 +77,7 @@
 ***
 # Election Results
 
-
 ## 2)Problem Statement
-
----
 
 -It's election night! Exciting! We have a feed of election results from a data supplier. 
 They will supply us a file which will be updated throughout the night as results come in.
