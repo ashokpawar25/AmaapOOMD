@@ -76,6 +76,12 @@
 
 ***
 # Election Results
+
+
+## 2)Problem Statement
+
+---
+
 -It's election night! Exciting! We have a feed of election results from a data supplier. 
 They will supply us a file which will be updated throughout the night as results come in.
 
@@ -83,46 +89,62 @@ A result will consist of:
  - A constituency
  - A repeating set of pairs with the party code and the votes cast
 
-## 2)Problem Statement
+So for example:
 
-- You work at a credit card company and as a value-add they want to start providing alerts to users when their spending in any particular category is higher than usual.
-- Compare the total amount paid for the current month, grouped by category with the previous month.
-- Filter down to the categories for which the user spent at least 50% more this month than last month.
-- Compose an e-mail message to the user that lists the categories for which spending was unusually high.
+Banglore, 11014, BJP, 17803, INC, 4923, CPI, 2069, NCP
+Pune, INC, 9389, CPI, 4829, BJP, 3375, NCP, 3371, BSP, 309, IND
+
+Party Codes -
+
+BJP - Bhartiya Janta Party
+INC - Indian National Congress
+BSP - Bahujan Samaj Party
+CPI - Communist Party of India
+NCP - Nationalist Congress Party
+IND - Independant
+
+We want to transform this into a standard result that shows:
+
+- the constituency name
+- translates the party code into a full name
+- shows the winner of the constituency
+
 
 ## Classes and Variables
 
 
 ### ElectionResult Class
 
-- **Variables**:
+- **States**:
   - `constituency`: String - Represents the name of the constituency.
   - `results`: HashMap<String, Integer> - Represents the results of the election for each party.
 
 - **Constructors**:
   - `ElectionResult(String constituency, HashMap<String, Integer> results)`: Initializes the ElectionResult with the given constituency name and results.
 
-- **Methods**:
+- **Behaviour**:
   - `getWinner()`: Returns the winning party for the constituency.
 
-### Party Class
-
-- **Variables**:
-  - `code`: String - Represents the party code.
-  - `name`: String - Represents the full name of the party.
-
-- **Constructors**:
-  - `Party(String code, String name)`: Initializes the Party with the given code and name.
 
 ### ElectionAnalyzer Class
 
-- **Variables**:
+- **States**:
   - `parties`: HashMap<String, Party> - Represents a mapping of party codes to Party objects.
   - `results`: ArrayList<ElectionResult> - Represents the list of election results.
 
 - **Constructors**:
   - `ElectionAnalyzer()`: Empty constructor for analyzer
 
-- **Methods**:
+- **Behaviour**:
   - `processResults(ArrayList<ElectionResult>)`: Reads election results from the list and do the analysis.
   - `displayResults()`: Displays the analyzed results including constituency-wise results and winners.
+
+ ### Party Enum
+
+- **Enum Constants**:
+  - `BJP("BJP", "Bhartiya Janta Party")`
+  - `INC("INC", "Indian National Congress")`
+  - `BSP("BSP", "Bahujan Samaj Party")`
+  - `CPI("CPI", "Communist Party of India")`
+  - `NCP("NCP", "Nationalist Congress Party")`
+  - `IND("IND", "Independent")`
